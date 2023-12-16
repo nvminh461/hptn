@@ -21,6 +21,7 @@ function renderList() {
     .join("");
   list.innerHTML = ctx;
   document.querySelector("#content").innerHTML = `&raquo ${data[activeIndex]}`;
+  document.querySelector("#content2").innerHTML = `&raquo ${data[activeIndex]}`;
   document.querySelectorAll("#list li").forEach((el, index) => {
     el.addEventListener("click", () => {
       activeIndex = index;

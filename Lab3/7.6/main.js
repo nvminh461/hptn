@@ -1,24 +1,27 @@
-console.log("Hello Hiếu Joyce");
 const data = [
   {
     hoTen: "Hoàng Thị Thảo",
     ngaySinh: "23/6/1990",
     gioiTinh: "Nữ",
+    button: "Xóa",
   },
   {
     hoTen: "Ngô Mạnh Quân",
     ngaySinh: "14/4/1992",
     gioiTinh: "Nam",
+    button: "Xóa",
   },
   {
     hoTen: "Nguyễn Thanh Tùng",
     ngaySinh: "27/9/1991",
     gioiTinh: "Nam",
+    button: "Xóa",
   },
   {
     hoTen: "Hoàng Thị Ngân",
     ngaySinh: "12/12/1992",
     gioiTinh: "Nữ",
+    button: "Xóa",
   },
 ];
 
@@ -31,8 +34,7 @@ function renderTableBody(checks) {
     .map((el, index) => {
       let bg = index % 2 === 0 ? "900" : "800";
       return `<tr
-        class="bg-white border-b ${
-          checks[index] ? "dark:bg-yellow-600" : `dark:bg-gray-${bg}`
+        class="bg-white border-b ${checks[index] ? "dark:bg-yellow-600" : `dark:bg-gray-${bg}`
         } dark:border-gray-700 cursor-pointer hover:dark:bg-green-600 ease-in-out duration-200 text-white"
     >
         <td class="py-4 px-6">
@@ -47,6 +49,9 @@ function renderTableBody(checks) {
         <td class="py-4 px-6">${el.hoTen}</td>
         <td class="py-4 px-6">${el.ngaySinh}</td>
         <td class="py-4 px-6">${el.gioiTinh}</td>
+        <td class="py-4 px-6">
+        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" onclick="onDeleteButtonClick(${index})">Xóa</button>
+        </td>
     </tr>`;
     })
     .join("");
@@ -72,3 +77,8 @@ checkedCheckbox.addEventListener("change", (e) => {
   checks.fill(!!e.currentTarget.checked);
   renderTableBody(checks);
 });
+
+function onDeleteButtonClick(index) {
+  checks[index] = false;
+  renderTableBody(checks);
+}
